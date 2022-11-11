@@ -1,0 +1,27 @@
+
+<div class="card showcase">
+  <div class="container showcase-inner card-body" style="margin-top: -20%; margin-left: 50px;">
+    <h4 class="card-title">Access admin priveleges</h4>
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm.value)" class="form-wrapper">
+      <div class="form-container">
+        <div class="form-group mb-2">
+          <label for="name">Enter Admin Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+            [(ngModel)]="password"
+          />
+        </div>
+      </div>
+      <button [disabled]="loading" class="btn btn-primary loginbutton" type="submit">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Submit
+      </button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
+    </form>
+  </div>
+</div>
+

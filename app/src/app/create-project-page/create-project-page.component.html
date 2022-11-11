@@ -1,0 +1,42 @@
+
+        <div class="card showcase">
+            <div class="container showcase-inner card-body" style="margin-top: 0%;">
+                <h4 class="card-title">Create New Project</h4>
+                <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm.value)">
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="name">Project Name:</label>
+                            <input type="text" class="form-control" id="name" name="pname" minlength="1" required [(ngModel)]="projectModel.pname">
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="owner">Project Owner:</label>
+                            <input type="text" class="form-control" id="owner" name="powner" minlength="1" required [(ngModel)]="projectModel.powner">
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="type">Project Type:</label>
+                            <select class="form-control project-select" id="type" name="ptype" minlength="1" required [(ngModel)]="projectModel.ptype">
+                            <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                            </select>
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="startDate">Project Start Date:</label>
+                            <input type="date" class="form-control" id="startDate" name="startDate" required [(ngModel)]="projectModel.pstartDate">
+                        </div>
+                
+                        <div class="form-group">
+                            <label for="description">Project Description:</label>
+                            <textarea class="form-control form-description" rows="5" cols="50" id="description" minlength="1" name="description" [(ngModel)]="projectModel.pdescription"></textarea>
+                        </div>
+                    </div>
+                    <button variant="primary" class="project-submit-button btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    
+
+
+

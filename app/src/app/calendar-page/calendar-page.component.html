@@ -1,0 +1,66 @@
+<div class="body row text-center">
+
+    <div class="col-md-4" style="padding:10px;">
+        <div class="btn-group">
+            <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+                Previous
+            </div>
+            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+                Today
+            </div>
+            <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+                Next
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" style="padding:10px;">
+        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4" style="padding:10px;">
+        <div class="btn-group">
+            <div class="btn btn-primary" (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month">
+                Month
+            </div>
+            <div class="btn btn-primary" (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week">
+                Week
+            </div>
+            <div class="btn btn-primary" (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day">
+                Day
+            </div>
+        </div>
+    </div>
+
+    <div [ngSwitch]="view" style="margin-top: 10px;">
+
+        <mwl-calendar-month-view (dayClicked)="open(content, $event.day)" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events">
+        </mwl-calendar-month-view>
+    
+        <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events">
+        </mwl-calendar-week-view>
+    
+        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events">
+        </mwl-calendar-day-view>
+    
+    </div>
+
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Events for {{ dateClickedOn | calendarDate:(CalendarView.Day + 'ViewTitle'):'en' }}</h4>
+    </div>
+    <div class="modal-body">
+        <ul *ngFor="let data of events" class="horizontal">
+            <ng-container *ngIf="data != undefined && data.start.getTime() == dateClickedOn.getTime()" style="color:aqua;">
+                <h2 style="font-size: 20px; margin-left:-30px;"><b>{{data.title}}</b></h2>
+                <li><b>Owner: </b>{{data.projectOwner}}</li>
+                <li><b>Project Type: </b>{{data.projectType}}</li>
+                <li><b>Description: </b>{{data.description}}</li>
+            </ng-container>
+       </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Done</button>
+    </div>
+  </ng-template>

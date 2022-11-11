@@ -1,0 +1,73 @@
+h4{
+    font-size:30px;
+    color:#3700B3;
+}
+.form-wrapper {
+    font-family: 'Roboto';
+    font-size: 17.5px;
+    padding: 30px;
+}
+
+input {
+    border-radius: 10px;
+    width: 446px;
+    height: 32.5px;
+    padding: 5px;
+    border: 1px solid;
+}
+
+.loginbutton{
+    background-color: #3700B3;
+    position: static;
+    left: 25%;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.4;
+  }
+
+  .showcase {
+    background: rgba(236, 150, 193, 0.69);
+    color: #fff;
+    height: 100vh;
+    position: relative;
+  }
+  
+  .showcase:before {
+    content: '';
+    background: url('https://images.unsplash.com/photo-1567653418876-5bb0e566e1c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTJ8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80') no-repeat center center/cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .showcase .showcase-inner {
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .showcase h1 {
+    font-size: 4rem;
+  }
+  
+  .showcase p {
+    font-size: 1.3rem;
+  }
